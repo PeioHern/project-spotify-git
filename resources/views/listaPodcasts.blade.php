@@ -22,26 +22,30 @@
 
     {{-- FORMATO LISTA --}}
 
-     {{-- <ul class="podcast-list">
+    {{-- <ul class="podcast-list">
         @foreach ($podcasts as $podcast)
             <li>{{ $podcast->nombre }} - {{ $podcast->descripcion }} (Faved-User: {{ $podcast->descripcion }})</li>
         @endforeach
     </ul> --}}
 
-<ul class="podcast-list">
-    @foreach ($podcasts as $podcast)
-        <li>
-            {{ $podcast->nombre }} - {{ $podcast->descripcion }} <br>
-            
-            Faved by: 
-            @if($podcast->usuarios->isEmpty())
-                No one yet
-            @else
-                {{ $podcast->usuarios->pluck('name')->join(', ') }}
-            @endif
-        </li>
-    @endforeach
-</ul>
+    <h1>Mi Usuario: {{ $miUser }}</h1>
+
+    <ul class="podcast-list">
+        @foreach ($podcasts as $podcast)
+            <li>
+                {{ $podcast->nombre }} - {{ $podcast->descripcion }} <br>
+
+                Faved by:
+                @if ($podcast->usuarios->isEmpty())
+                    No one yet
+                @else
+                    {{ $podcast->usuarios->pluck('name')->join(', ') }}
+                @endif
+            </li>
+        @endforeach
+    </ul>
+
+
 
 
 @endsection
